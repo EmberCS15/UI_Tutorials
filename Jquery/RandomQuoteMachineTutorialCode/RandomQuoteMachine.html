@@ -50,8 +50,8 @@ function RandomQuoteMachine() {
 	var allQuotes = [];
 
 	this.initFn = function() {
-		// Attach click event with #random-quote-btn button
-		// Whenever the button is clicked we need to call the changeRandomQuote function
+		// Attach 'click' event with #random-quote-btn button
+		// Whenever the button is clicked we need to call the changeRandomQuote() function
 
 
 		// get all quotes via ajax call
@@ -62,7 +62,7 @@ function RandomQuoteMachine() {
 	var getAllQuotesAjaxCall = function(successCallback) {
 		var quotesUrl = 'https://gist.githubusercontent.com/dmakk767/9375ff01aff76f1788aead1df9a66338/raw/491f8c2e91b7d3b8f1c8230e32d9c9bc1a1adfa6/Quotes.json%2520';
 
-		// write ajax call
+		// write ajax call and use .done for successCallback, we will not be using .fail here
 
 
 
@@ -72,7 +72,7 @@ function RandomQuoteMachine() {
 	var addQuotesToArray = function(randomQuotesArray) {
 		// loop through each random quote object and insert into allQuotes array
 		// array.push appends an element to an array in javascript
-		// use $.each to loop though the randomQuotesArray
+		// use $.each to loop though the randomQuotesArray and put quotes into the allQuotes array
 
 
 
@@ -80,6 +80,7 @@ function RandomQuoteMachine() {
 
 
 	var changeRandomQuote = function() {
+		// select a random Quote
 		var randomQuoteIndex = Math.floor(Math.random()*(allQuotes.length));
 		var randomQuote = allQuotes[randomQuoteIndex];
 		
@@ -91,22 +92,23 @@ function RandomQuoteMachine() {
 		};
 		*/
 
-		// pass the quote from the randomQuote object
+		// pass the quote from the randomQuote object : Example object.someParameter
 		changeRandomQuoteInHtml();
 
-		// pass the authors name from the randomQuote object
+		// pass the authors name from the randomQuote object: Example object.someParameter
 		changeAuthorInHtml();
 
 		// change the background color
 		changeBodyBackgroundColor();
 
-		// pass the entire randomQuote object
+		// pass the entire randomQuote object to tweeter handle
 		changeTweeterPostUrl(randomQuote);
 	};
 
 
 	var changeRandomQuoteInHtml = function(randomQuoteText) {
-		// select a animation class from the array of animation classes
+		// select a animation class index from the array of animation classes
+		// use this to index into the  array 'arrayAnimation'
 		var randomAnimationIndex = Math.floor(Math.random() * (arrayAnimation.length));
 		/*
 			1. use the custom animateCss function that we added to jQuery to add the animation class 
@@ -122,15 +124,16 @@ function RandomQuoteMachine() {
 	};
 
 	var changeAuthorInHtml = function(randomAuthor) {
-		// change the html of #random-quote-author to randomAuthor
+		// change the html of '#random-quote-author' element to randomAuthor
 
 	};
 
 	var changeBodyBackgroundColor = function() {
+		// Index for the array 'colorArray' which stores a list of colors
 		var randomColorIndex = Math.floor(Math.random() * (colorArray.length));
-		// Change the body color of the document to color at randomColorIndex
-		// "body" is the selector for body element of the html
 
+		// Change the body color of the document to color at index randomColorIndex of colorArray
+		// "body" is the selector for body element of the html
 
 
 	};
